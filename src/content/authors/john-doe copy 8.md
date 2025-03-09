@@ -1,5 +1,5 @@
 ---
-title: Daniel Roberts
+title: Sam Roberts
 email: daniel@fluxfloats.com
 image: "/images/avatar.png"
 description: "Full-Stack Developer at fluxfloats, delivering seamless integration between frontend and backend technologies."

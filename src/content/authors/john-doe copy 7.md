@@ -1,6 +1,6 @@
 ---
-title: Arjun Patel
-email: arjun@fluxfloats.com
+title: Hamza Bolton
+email: bolton@fluxfloats.com
 image: "/images/avatar.png"
 description: "DevOps Engineer optimizing infrastructure, deployment pipelines, and cloud scalability."
 social:

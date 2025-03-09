@@ -1,6 +1,6 @@
 ---
-title: Rahul Sharma
-email: rahul@fluxfloats.com
+title: Abduallah Khatak
+email: abduallah@fluxfloats.com
 image: "/images/avatar.png"
 description: "Backend Developer, creating robust and scalable server-side architectures for complex applications."
 social:

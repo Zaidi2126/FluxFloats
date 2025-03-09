@@ -1,5 +1,5 @@
 ---
-title: Hamna Khan
+title: Hamna Shehroz
 email: hamna@fluxfloats.com
 image: "/images/avatar.png"
 description: "AI & ML Engineer at fluxfloats, developing intelligent solutions for automation and data-driven decision-making."
