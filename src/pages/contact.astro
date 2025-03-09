@@ -1,0 +1,126 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+---
+
+<Base title="Contact Us" meta_title="Contact" description="Get in touch with us">
+  <PageHeader title="Contact Us" />
+  
+  <section class="section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto md:col-10 lg:col-6">
+          <form id="contact-form">
+            <div class="mb-6">
+              <label for="name" class="form-label">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input id="name" name="name" class="form-input" placeholder="John Doe" type="text" required />
+            </div>
+
+            <div class="mb-6">
+              <label for="company" class="form-label">
+                Company Name
+              </label>
+              <input id="company" name="company" class="form-input" placeholder="Your Company Name" type="text" />
+            </div>
+
+            <div class="mb-6">
+              <label for="email" class="form-label">
+                Work Email <span class="text-red-500">*</span>
+              </label>
+              <input id="email" name="email" class="form-input" placeholder="your@email.com" type="email" required />
+            </div>
+
+            <div class="mb-6">
+              <label for="phone" class="form-label">
+                Phone Number <span class="text-red-500">*</span>
+              </label>
+              <input id="phone" name="phone" class="form-input" placeholder="+123456789" type="tel" required />
+            </div>
+
+            <div class="mb-6">
+              <label for="subject" class="form-label">
+                Subject <span class="text-red-500">*</span>
+              </label>
+              <select id="subject" name="subject" class="form-input" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="general">General Inquiry</option>
+                <option value="partnership">Partnership Proposal</option>
+                <option value="support">Technical Support</option>
+                <option value="custom-solution">Custom Software Request</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="mb-6">
+              <label for="message" class="form-label">
+                Message <span class="text-red-500">*</span>
+              </label>
+              <textarea id="message" name="message" class="form-input" placeholder="Describe your request in detail..." rows="6" required></textarea>
+            </div>
+
+            <div class="mb-6 flex items-start">
+              <input id="terms" name="terms" type="checkbox" class="mr-2" required />
+              <label for="terms" class="text-sm">
+                I agree to the <a href="/terms" class="text-primary">Terms & Conditions</a>.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">Send Message</button>
+          </form>
+
+          <!-- Success Message -->
+          <p id="success-message" class="hidden text-green-600 mt-4">Your message has been sent successfully!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript for Sending Emails -->
+  <script type="text/javascript" src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form from refreshing
+
+      // Get form values
+      const name = document.getElementById("name").value;
+      const company = document.getElementById("company").value || "Not Provided";
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value;
+      const termsAccepted = document.getElementById("terms").checked;
+
+      if (!termsAccepted) {
+        alert("You must agree to the Terms & Conditions before submitting.");
+        return;
+      }
+
+      // SMTP.js: Send email directly from the frontend
+      Email.send({
+        SecureToken: "YOUR_SMTPJS_SECURE_TOKEN", // Replace this with your SecureToken from SMTPJS
+        To: "your@email.com", // Change this to your email
+        From: email, // User's email
+        Subject: `New Contact Form Submission - ${subject}`,
+        Body: `
+          <h2>New Contact Message</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Company:</strong> ${company}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+
+          <p><strong>Message:</strong> ${message}</p>
+          <p><strong>Terms Accepted:</strong> ${termsAccepted ? "Yes" : "No"}</p>
+        `,
+      }).then(response => {
+        if (response === "OK") {
+          document.getElementById("success-message").classList.remove("hidden");
+          document.getElementById("contact-form").reset();
+        } else {
+          alert("Failed to send message. Please try again.");
+        }
+      });
+    });
+  </script>
+</Base>
