@@ -24,13 +24,13 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed by [flux floatss](https://fluxfloatss.com)"
+    "copyright": "Designed And Developed by [flux floats](https://fluxfloatss.com)"
   },
 
   "navigation_button": {
-    "enable": true,
-    "label": "Get Started",
-    "link": "https://github.com/zeon-studio/astroplate"
+    "enable": false,
+    "label": "",
+    "link": "https://fluxfloatss.com"
   },
 
   "disqus": {

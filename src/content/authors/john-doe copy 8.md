@@ -1,5 +1,5 @@
 ---
-title: Sam Roberts
+title: Amna Ateef
 email: daniel@fluxfloats.com
 image: "/images/avatar.png"
 description: "Full-Stack Developer at fluxfloats, delivering seamless integration between frontend and backend technologies."
@@ -12,4 +12,4 @@ social:
     link: https://linkedin.com
 ---
 
-Daniel is a full-stack developer with expertise in end-to-end web application development, ensuring seamless functionality and user experience.
+Amna is a UI/UX intern with expertise in designing UI elements, ensuring seamless functionality and user experience.

@@ -1,5 +1,5 @@
 ---
-title: Fatima Ahmed
+title: Shahad Mattar
 email: fatima@fluxfloats.com
 image: "/images/avatar.png"
 description: "Graphic Designer at fluxfloats, delivering visually stunning branding and digital design solutions."
@@ -12,4 +12,4 @@ social:
     link: https://linkedin.com
 ---
 
-Fatima is an expert in UI/UX and graphic design, crafting visually engaging designs that enhance user experience and brand identity.
+Shahad is an AI intern
