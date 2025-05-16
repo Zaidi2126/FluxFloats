@@ -1,15 +1,17 @@
 ---
-title: Shahad Mattar
-email: fatima@fluxfloats.com
+title: Shehroz Zaidi
+email: shehroz@fluxfloats.com
 image: "/images/avatar.png"
-description: "Graphic Designer at fluxfloats, delivering visually stunning branding and digital design solutions."
+description: "Founder & Lead Developer at fluxfloats, specializing in AI, blockchain, and scalable web applications."
 social:
-  - name: dribbble
-    icon: FaDribbble
-    link: https://dribbble.com
+  # - name: github
+  #   icon: FaGithub
+  #   link: https://github.com
+  # - name: twitter
+  #   icon: FaTwitter
+  #   link: https://twitter.com
   - name: linkedin
     icon: FaLinkedin
-    link: https://linkedin.com
+    link: https://www.linkedin.com/in/shehroz-zaidi-916a8a218/
 ---
-
-Shahad is an AI intern
+Shehroz is a backend developer specializing in building scalable server-side applications.

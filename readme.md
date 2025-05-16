@@ -10,7 +10,7 @@
 </h2>
 
 <p align=center>
-  <a href="https://github.com/withastro/astro/releases/tag/astro%404.3.2" alt="Contributors">
+  <a href="https://ae.linkedin.com/company/flux-floats" alt="Contributors">
     <img src="https://img.shields.io/static/v1?label=ASTRO&message=4.3&color=000&logo=astro" />
   </a>
 

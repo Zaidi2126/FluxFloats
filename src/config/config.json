@@ -1,14 +1,14 @@
 {
   "site": {
     "title": "Flux Floats",
-    "base_url": "https://fluxfloatss.com",
+    "base_url": "https://fluxfloats.com",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
     "logo_darkmode": "/images/logo-darkmode.png",
-    "logo_width": "150",
-    "logo_height": "30",
+    "logo_width": "250",
+    "logo_height": "65",
     "logo_text": "Astroplate"
   },
 
@@ -24,13 +24,13 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed by [flux floats](https://fluxfloatss.com)"
+    "copyright": "Designed And Developed by [Flux Floats](https://fluxfloats.com)"
   },
 
   "navigation_button": {
     "enable": false,
     "label": "",
-    "link": "https://fluxfloatss.com"
+    "link": "https://fluxfloats.com"
   },
 
   "disqus": {

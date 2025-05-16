@@ -2,18 +2,18 @@
 # Banner
 banner:
   title: "Innovate. Build. Scale. – Powering the Future of Technology."
-  content: "fluxfloats is a cutting-edge software house specializing in AI, machine learning, web development, UI/UX design, and graphic design. We craft intelligent, scalable, and user-focused solutions that drive businesses forward."
+  content: "FluxFloats is a cutting-edge software house specializing in AI, machine learning, web development, UI/UX design, and graphic design. We craft intelligent, scalable, and user-focused solutions that drive businesses forward."
   image: "/images/banner.png"
   button:
     enable: true
-    label: "Get Started with fluxfloats"
+    label: "Get Started with FluxFloats"
     link: "https://fluxfloats.com"
 
 # Features
 features:
-  - title: "What We Do at fluxfloats"
+  - title: "What We Do at FluxFloats"
     image: "/images/service-1.png"
-    content: "At fluxfloats, we offer end-to-end software solutions designed for scalability, innovation, and impact. Whether you're a startup or an enterprise, our expertise helps you stay ahead in a rapidly evolving digital world."
+    content: "At FluxFloats, we offer end-to-end software solutions designed for scalability, innovation, and impact. Whether you're a startup or an enterprise, our expertise helps you stay ahead in a rapidly evolving digital world."
     bulletpoints:
       - "Custom Web & App Development for businesses of all sizes."
       - "AI & Machine Learning solutions tailored to automate and optimize workflows."
@@ -26,9 +26,9 @@ features:
       label: "Explore Our Services"
       link: "#"
 
-  - title: "Why Choose fluxfloats?"
+  - title: "Why Choose FluxFloats?"
     image: "/images/service-2.png"
-    content: "fluxfloats is more than just a software house—we are your **technology partner**. We deliver high-quality, cutting-edge solutions built for speed, security, and scalability. Here’s why businesses trust us:"
+    content: "FluxFloats  is more than just a software house—we are your **technology partner**. We deliver high-quality, cutting-edge solutions built for speed, security, and scalability. Here’s why businesses trust us:"
     bulletpoints:
       - "AI-driven automation and data-driven insights for smarter decision-making."
       - "Custom-built applications with seamless user experiences."

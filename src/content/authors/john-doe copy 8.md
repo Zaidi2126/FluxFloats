@@ -1,15 +1,12 @@
 ---
-title: Amna Ateef
-email: daniel@fluxfloats.com
+title: Zinnia Zia
+email: bolton@fluxfloats.com
 image: "/images/avatar.png"
-description: "Full-Stack Developer at fluxfloats, delivering seamless integration between frontend and backend technologies."
+description: "DevOps Engineer optimizing infrastructure, deployment pipelines, and cloud scalability."
 social:
-  - name: github
-    icon: FaGithub
-    link: https://github.com
   - name: linkedin
     icon: FaLinkedin
-    link: https://linkedin.com
+    link: https://www.linkedin.com/in/zinnia-zia-561298249/
 ---
 
-Amna is a UI/UX intern with expertise in designing UI elements, ensuring seamless functionality and user experience.
+Zinnia is a frontend engineer focused on creating user interfaces and enhancing user experience.
