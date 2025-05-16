@@ -1,14 +1,12 @@
 ---
-title: Hiba Huzaifah
+title: Hiba Huzaifa
 email: daniel@fluxfloats.com
 image: "/images/avatar.png"
 description: "Full-Stack Developer at fluxfloats, delivering seamless integration between frontend and backend technologies."
 social:
-  - name: github
-    icon: FaGithub
-    link: https://github.com
+
   - name: linkedin
     icon: FaLinkedin
-    link: https://linkedin.com
+    link: https://www.linkedin.com/in/hiba-huzaifa-b23a24228/
 ---
-Hiba is a Quality Assurance Specialist, ensuring the highest standards of product quality.
+Hiba is a QA and Testing Specialist, dedicated to ensuring software reliability and performance.

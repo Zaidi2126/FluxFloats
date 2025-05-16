@@ -1,15 +1,12 @@
 ---
-title: Hamza Bolton
-email: bolton@fluxfloats.com
+title: Hamna Huzaifa
+email: hamna@fluxfloats.com
 image: "/images/avatar.png"
-description: "DevOps Engineer optimizing infrastructure, deployment pipelines, and cloud scalability."
+description: "AI & ML Engineer at fluxfloats, developing intelligent solutions for automation and data-driven decision-making."
 social:
-  - name: github
-    icon: FaGithub
-    link: https://github.com
   - name: linkedin
     icon: FaLinkedin
-    link: https://linkedin.com
+    link: https://www.linkedin.com/in/hamna-huzaifa-021296249/
 ---
 
-Hamza is a DevOps engineer ensuring smooth deployment and cloud-based infrastructure scalability.
+Hamna is a backend engineer passionate about building robust and scalable applications.

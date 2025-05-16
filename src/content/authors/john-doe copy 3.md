@@ -1,15 +1,13 @@
 ---
-title: Hamna Shehroz
-email: hamna@fluxfloats.com
+title: Amna Ateef
+email: daniel@fluxfloats.com
 image: "/images/avatar.png"
-description: "AI & ML Engineer at fluxfloats, developing intelligent solutions for automation and data-driven decision-making."
+description: "Full-Stack Developer at fluxfloats, delivering seamless integration between frontend and backend technologies."
 social:
-  - name: github
-    icon: FaGithub
-    link: https://github.com
+
   - name: linkedin
     icon: FaLinkedin
-    link: https://linkedin.com
+    link: https://www.linkedin.com/in/amna-ateef/
 ---
 
-Hamna is an AI & ML engineer passionate about creating data-driven solutions that enhance automation and business intelligence. She specializes in building machine learning models for real-world applications.
+Amna is a UI/UX and graphic designer with expertise in crafting appealing interfaces.
