@@ -1,6 +1,6 @@
 import React from "react";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+// import LiteYouTubeEmbed from "react-lite-youtube-embed";
+// import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 const Youtube = ({
   id,
@@ -12,8 +12,7 @@ const Youtube = ({
   [key: string]: any;
 }) => {
   return (
-    <LiteYouTubeEmbed
-      wrapperClass="yt-lite rounded-lg"
+    <p
       id={id}
       title={title}
       {...rest}
