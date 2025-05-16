@@ -2,7 +2,7 @@
 title: Shehroz Zaidi
 email: shehroz@fluxfloats.com
 image: "/images/avatar.png"
-description: "Founder & Lead Developer at fluxfloats, specializing in AI, blockchain, and scalable web applications."
+description: "Founder & Lead Developer at Flux Floats, specializing in AI, blockchain, and scalable web applications."
 social:
   # - name: github
   #   icon: FaGithub

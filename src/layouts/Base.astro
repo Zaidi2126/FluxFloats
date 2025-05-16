@@ -7,7 +7,7 @@ import Footer from "@/partials/Footer.astro";
 import Header from "@/partials/Header.astro";
 import "@/styles/main.css";
 import { AstroFont } from "astro-font";
-import { ClientRouter } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 import SearchModal from "./helpers/SearchModal";
 
 // font families
@@ -44,6 +44,7 @@ const { title, meta_title, description, image, noindex, canonical } =
 <!doctype html>
 <html lang="en">
   <head>
+    <ViewTransitions fallback="swap" />
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
     <!-- theme meta -->
@@ -147,3 +148,36 @@ const { title, meta_title, description, image, noindex, canonical } =
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --transition-duration: 0.3s;
+    --transition-timing: ease-in-out;
+  }
+
+  /* Add smooth transitions for page changes */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  /* Add fade transition */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  ::view-transition-old(root) {
+    animation: fade-out var(--transition-duration) var(--transition-timing) forwards;
+  }
+
+  ::view-transition-new(root) {
+    animation: fade-in var(--transition-duration) var(--transition-timing) forwards;
+  }
+</style>
