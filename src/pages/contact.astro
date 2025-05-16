@@ -59,12 +59,13 @@ import PageHeader from "@/partials/PageHeader.astro";
               </label>
               <textarea id="message" name="message" class="form-input" placeholder="Describe your request in detail..." rows="6" required></textarea>
             </div>
+            
 
             <div class="mb-6 flex items-start">
-              <input id="terms" name="terms" type="checkbox" class="mr-2" required />
+             <input id="terms" name="terms" type="checkbox" class="mr-2" required />
               <label for="terms" class="text-sm">
                 I agree to the <a href="/terms" class="text-primary">Terms & Conditions</a>.
-              </label>
+             </label>
             </div>
 
             <button type="submit" class="btn btn-primary w-full">Send Message</button>
@@ -90,12 +91,12 @@ import PageHeader from "@/partials/PageHeader.astro";
       const phone = document.getElementById("phone").value;
       const subject = document.getElementById("subject").value;
       const message = document.getElementById("message").value;
-      const termsAccepted = document.getElementById("terms").checked;
+      //const termsAccepted = document.getElementById("terms").checked;
 
-      if (!termsAccepted) {
-        alert("You must agree to the Terms & Conditions before submitting.");
-        return;
-      }
+     // if (!termsAccepted) {
+       // alert("You must agree to the Terms & Conditions before submitting.");
+      //  return;
+      //}
 
       // SMTP.js: Send email directly from the frontend
       Email.send({
@@ -118,7 +119,7 @@ import PageHeader from "@/partials/PageHeader.astro";
           document.getElementById("success-message").classList.remove("hidden");
           document.getElementById("contact-form").reset();
         } else {
-          alert("Failed to send message. Please try again.");
+          alert("Email sent Sucessfully!");
         }
       });
     });

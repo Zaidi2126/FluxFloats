@@ -25,7 +25,7 @@ const experienceYears = 5;
  
           <h2 class="h3 mb-6 text-primary dark:text-darkmode-primary">Who We Are</h2>
           <p class="text-lg text-text-light dark:text-darkmode-text-light">
-            {markdownify("fluxfloats is a forward-thinking software house specializing in **Artificial Intelligence, Machine Learning, Web Development, UI/UX Design, and Automation**. We create intelligent, scalable, and user-centric solutions that drive innovation, streamline operations, and enhance digital experiences. Our mission is to empower businesses and individuals with cutting-edge technology that transforms ideas into reality.")}
+            {markdownify("FluxFloats is a forward-thinking software house specializing in **Artificial Intelligence, Machine Learning, Web Development, UI/UX Design, and Automation**. We create intelligent, scalable, and user-centric solutions that drive innovation, streamline operations, and enhance digital experiences. Our mission is to empower businesses and individuals with cutting-edge technology that transforms ideas into reality.")}
           </p>
         </div>
       </div>
@@ -41,7 +41,7 @@ const experienceYears = 5;
           <div class="p-6 shadow-lg rounded-lg bg-white dark:bg-darkmode-body transition-transform hover:scale-105">
             <h3 class="h5">🌍 Our Vision</h3>
             <p class="text-text-light dark:text-darkmode-text-light">
-              To **redefine the future of technology** by pioneering **AI-driven**, **scalable**, and **intuitive** digital solutions.  
+              To redefine the future of technology by pioneering AI-driven,scalable, and intuitive digital solutions.  
               We envision a world where intelligent automation, cutting-edge software, and seamless user experiences  
               bridge the gap between innovation and real-world impact, driving progress across industries.
             </p>
@@ -51,9 +51,9 @@ const experienceYears = 5;
           <div class="p-6 shadow-lg rounded-lg bg-white dark:bg-darkmode-body transition-transform hover:scale-105">
             <h3 class="h5">🚀 Our Mission</h3>
             <p class="text-text-light dark:text-darkmode-text-light">
-              To **empower businesses and individuals** with **intelligent, efficient, and future-proof** software solutions  
+              To empower businesses and individuals with intelligent, efficient, and future-proof software solutions  
               that streamline processes, enhance productivity, and unlock new opportunities.  
-              At **fluxfloats**, we are committed to delivering cutting-edge technology, fostering innovation,  
+              At FluxFloats, we are committed to delivering cutting-edge technology, fostering innovation,  
               and shaping a digital-first world where businesses can thrive and evolve effortlessly.
             </p>
           </div>
@@ -64,25 +64,60 @@ const experienceYears = 5;
   
 
   <!-- Animated Stats Section (Now Theme-Responsive) -->
-  <section class="section bg-gradient-to-r from-primary to-secondary dark:from-darkmode-secondary dark:to-darkmode-primary text-white text-center">
-    <div class="container">
-      <h2 class="h3 mb-6 theme-text">Our Impact in Numbers</h2>
-      <div class="row">
-        <div class="md:col-4">
-          <h3 class="h2 counter theme-text" data-target={projectsCompleted}>0</h3>
-          <p class="text-lg">Projects Completed</p>
-        </div>
-        <div class="md:col-4">
-          <h3 class="h2 counter theme-text" data-target={clientsServed}>0</h3>
-          <p class="text-lg">Clients Served</p>
-        </div>
-        <div class="md:col-4">
-          <h3 class="h2 theme-text">{experienceYears}+</h3>
-          <p class="text-lg">Years of Experience</p>
-        </div>
+<section class="section bg-gradient-to-r from-primary to-secondary dark:from-darkmode-secondary dark:to-darkmode-primary text-white text-center">
+  <div class="container">
+    <h2 class="h3 mb-6 theme-text">Our Impact in Numbers</h2>
+    <div class="row">
+      <div class="md:col-4">
+        <h3 class="h2 counter theme-text" data-target="100">0</h3>
+        <p class="text-lg">Projects Completed</p>
+      </div>
+      <div class="md:col-4">
+        <h3 class="h2 counter theme-text" data-target="200">0</h3>
+        <p class="text-lg">Clients Served</p>
+      </div>
+      <div class="md:col-4">
+        <h3 class="h2 counter theme-text" data-target="5">0</h3>
+        <p class="text-lg">Years of Experience</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Counter Animation Script -->
+<script>
+  function animateCounters() {
+    const counters = document.querySelectorAll(".counter");
+
+    counters.forEach(counter => {
+      const target = +counter.getAttribute("data-target");
+      const duration = 1000;
+      const steps = 60;
+      let count = 0;
+      const increment = target / steps;
+
+      const updateCount = () => {
+        count += increment;
+        if (count < target) {
+          counter.innerText = `${Math.floor(count)}+`;
+          requestAnimationFrame(updateCount);
+        } else {
+          counter.innerText = `${target}+`;
+        }
+      };
+
+      updateCount();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", animateCounters);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+      animateCounters();
+    }
+  });
+</script>
+
 
   <!-- Timeline Section -->
   <section class="section bg-body dark:bg-darkmode-body">

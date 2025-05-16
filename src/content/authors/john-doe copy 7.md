@@ -12,4 +12,4 @@ social:
     link: https://linkedin.com
 ---
 
-Arjun is a DevOps engineer ensuring smooth deployment and cloud-based infrastructure scalability. He specializes in AWS, Docker, and CI/CD pipelines.
+Hamza is a DevOps engineer ensuring smooth deployment and cloud-based infrastructure scalability.

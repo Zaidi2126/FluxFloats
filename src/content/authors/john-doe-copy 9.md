@@ -1,5 +1,5 @@
 ---
-title: Amna Ateef
+title: Hiba Huzaifah
 email: daniel@fluxfloats.com
 image: "/images/avatar.png"
 description: "Full-Stack Developer at fluxfloats, delivering seamless integration between frontend and backend technologies."
@@ -11,5 +11,4 @@ social:
     icon: FaLinkedin
     link: https://linkedin.com
 ---
-
-Amna is a UI/UX intern with expertise in designing UI elements and ensuring seamless functionality.
+Hiba is a Quality Assurance Specialist, ensuring the highest standards of product quality.
