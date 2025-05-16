@@ -5,6 +5,10 @@
   "author": "zeon.studio",
   "license": "MIT",
   "packageManager": "yarn@1.22.22",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "yarn generate-json && astro dev",
     "build": "yarn generate-json && astro build",
