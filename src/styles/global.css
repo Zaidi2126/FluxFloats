@@ -1,0 +1,149 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode variables */
+    --background: #FFFFFF;
+    --surface: #F5F6FA;
+    --text-primary: #333333;
+    --text-secondary: #071E3D;
+    --accent-teal: #3DD7C1;
+    --accent-purple: #A53FF1;
+  }
+
+  .dark {
+    /* Dark mode variables */
+    --background: #071E3D;
+    --surface: #071E3D;
+    --text-primary: #FFFFFF;
+    --text-secondary: #F5F6FA;
+    --accent-teal: #3DD7C1;
+    --accent-purple: #A53FF1;
+  }
+
+  body {
+    @apply bg-background text-text-primary;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-accent-teal text-white hover:bg-opacity-90;
+  }
+
+  .btn-secondary {
+    @apply bg-accent-purple text-white hover:bg-opacity-90;
+  }
+
+  .card {
+    @apply bg-surface rounded-lg shadow-md p-6;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-teal;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-teal);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
+}
+
+/* Selection color */
+::selection {
+  background: var(--accent-teal);
+  color: var(--text-primary);
+}
+
+/* Focus outline */
+:focus {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 2px;
+}
+
+/* Link styles */
+a {
+  @apply text-accent-teal hover:text-accent-purple transition-colors;
+}
+
+/* Code block styles */
+pre {
+  @apply bg-surface p-4 rounded-lg overflow-x-auto;
+}
+
+code {
+  @apply text-accent-purple;
+}
+
+/* Blockquote styles */
+blockquote {
+  @apply border-l-4 border-accent-teal pl-4 italic;
+}
+
+/* Table styles */
+table {
+  @apply w-full border-collapse;
+}
+
+th {
+  @apply bg-surface text-text-primary font-semibold;
+}
+
+td, th {
+  @apply border border-gray-200 p-2;
+}
+
+/* Form element styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  @apply bg-surface border border-gray-200 rounded-md px-4 py-2 focus:border-accent-teal focus:ring-1 focus:ring-accent-teal;
+}
+
+/* Button hover effects */
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Card hover effects */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
+}
+
+/* Text gradients */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} 
