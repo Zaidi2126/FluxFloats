@@ -2,7 +2,7 @@
 title: Hamna Huzaifa
 email: hamna@fluxfloats.com
 image: "/images/avatar.png"
-description: "AI & ML Engineer at fluxfloats, developing intelligent solutions for automation and data-driven decision-making."
+description: "AI & ML Engineer at Flux Floats, developing intelligent solutions for automation and data-driven decision-making."
 social:
   - name: linkedin
     icon: FaLinkedin

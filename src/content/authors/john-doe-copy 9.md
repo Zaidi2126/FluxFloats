@@ -2,7 +2,7 @@
 title: Hiba Huzaifa
 email: daniel@fluxfloats.com
 image: "/images/avatar.png"
-description: "Full-Stack Developer at fluxfloats, delivering seamless integration between frontend and backend technologies."
+description: "Full-Stack Developer at Flux Floats, delivering seamless integration between frontend and backend technologies."
 social:
 
   - name: linkedin

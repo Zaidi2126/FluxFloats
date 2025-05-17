@@ -3,29 +3,91 @@ import ImageMod from "@/components/ImageMod.astro";
 import Base from "@/layouts/Base.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import { markdownify } from "@/lib/utils/textConverter";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import TimelineItem from "@/components/TimelineItem";
 
 const title = "About Us";
 const description = "Discover our journey, expertise, and commitment to innovation.";
 const image = "/images/team-photo.jpg";
 
 // Stats
-const projectsCompleted = 120;
-const clientsServed = 50;
-const experienceYears = 5;
+const stats = [
+  { target: 107, label: "Projects Completed" },
+  { target: 32, label: "Clients Served" },
+  { target: 8, label: "Years of Experience" }
+];
+
+// Timeline items
+const timelineItems = [
+  {
+    year: "2018",
+    title: "The Beginning",
+    description: "We started as a small, ambitious team passionate about building intelligent software. Our first project, <strong>DataFusion</strong> 🌐, was a data aggregation tool that streamlined information from multiple sources.",
+    icon: "🌱"
+  },
+  {
+    year: "2019",
+    title: "Breaking Boundaries",
+    description: "We developed <strong>InsightIQ</strong> 📊, an AI-driven analytics platform providing real-time insights for data-driven decisions.",
+    icon: "🌍"
+  },
+  {
+    year: "2020",
+    title: "AI Breakthrough",
+    description: "We made a significant impact with <strong>AutoFlow</strong> 🤖, an AI-powered workflow automation tool, increasing productivity by up to 40%.",
+    icon: "💡"
+  },
+  {
+    year: "2021",
+    title: "Industry Integration",
+    description: "Launched <strong>SmartNet</strong> 🌐, an IoT integration platform for smart infrastructure projects in healthcare and logistics.",
+    icon: "🔗"
+  },
+  {
+    year: "2022",
+    title: "Blockchain Integration",
+    description: "Introduced <strong>CryptoGuard</strong> 💰, a secure asset management tool offering real-time tracking and fraud detection.",
+    icon: "🔐"
+  },
+  {
+    year: "2023",
+    title: "Scaling Up",
+    description: "Launched <strong>Flux360</strong> 🚀, expanding globally and serving clients in healthcare, fintech, and supply chain management.",
+    icon: "🏆"
+  },
+  {
+    year: "2024",
+    title: "Strategic Partnerships",
+    description: "Forged key partnerships with leading tech companies to enhance our AI and blockchain capabilities.",
+    icon: "🌐"
+  },
+  {
+    year: "2025",
+    title: "Innovation Hub",
+    description: "Established the <strong>Flux Innovation Hub</strong>, focusing on developing next-gen solutions in AI, blockchain, and automation.",
+    icon: "🚀"
+  }
+];
 ---
 
 <Base title={title} description={description}>
   <PageHeader title={title} />
+
+  <style>
+    /* Make specific About Us headings black in light mode */
+    .about-heading {
+      color: black !important;
+    }
+  </style>
 
   <!-- About Section -->
   <section class="section-sm bg-body dark:bg-darkmode-body text-text-dark dark:text-darkmode-text-dark">
     <div class="container">
       <div class="row justify-center">
         <div class="text-center md:col-10 lg:col-7">
- 
-          <h2 class="h3 mb-6 text-primary dark:text-darkmode-primary">Who We Are</h2>
+          <h2 class="h3 mb-6 dark:text-white">Who We Are</h2>
           <p class="text-lg text-text-light dark:text-darkmode-text-light">
-            {markdownify("FluxFloats is a forward-thinking software house specializing in **Artificial Intelligence, Machine Learning, Web Development, UI/UX Design, and Automation**. We create intelligent, scalable, and user-centric solutions that drive innovation, streamline operations, and enhance digital experiences. Our mission is to empower businesses and individuals with cutting-edge technology that transforms ideas into reality.")}
+            {markdownify("FluxFloats is a forward-thinking software house specializing in Artificial Intelligence, Machine Learning, Web Development, UI/UX Design, and Automation. We create intelligent, scalable, and user-centric solutions that drive innovation, streamline operations, and enhance digital experiences. Our mission is to empower businesses and individuals with cutting-edge technology that transforms ideas into reality.")}
           </p>
         </div>
       </div>
@@ -35,7 +97,7 @@ const experienceYears = 5;
   <!-- Vision & Mission Section -->
   <section class="section bg-light dark:bg-darkmode-light text-text-dark dark:text-darkmode-text-dark">
     <div class="container text-center">
-      <h2 class="h3 mb-6 text-primary dark:text-darkmode-primary">Our Vision & Mission</h2>
+      <h2 class="h3 mb-6 dark:text-white">Our Vision & Mission</h2>
       <div class="row">
         <div class="md:col-6">
           <div class="p-6 shadow-lg rounded-lg bg-white dark:bg-darkmode-body transition-transform hover:scale-105">
@@ -61,211 +123,84 @@ const experienceYears = 5;
       </div>
     </div>
   </section>
-  
 
-  <!-- Animated Stats Section (Now Theme-Responsive) -->
-<section class="section bg-gradient-to-r from-primary to-secondary dark:from-darkmode-secondary dark:to-darkmode-primary text-white text-center">
-  <div class="container">
-    <h2 class="h3 mb-6 theme-text">Our Impact in Numbers</h2>
-    <div class="row">
-      <div class="md:col-4">
-        <h3 class="h2 counter theme-text" data-target="107">0</h3>
-        <p class="text-lg">Projects Completed</p>
-      </div>
-      <div class="md:col-4">
-        <h3 class="h2 counter theme-text" data-target="32">0</h3>
-        <p class="text-lg">Clients Served</p>
-      </div>
-      <div class="md:col-4">
-        <h3 class="h2 counter theme-text" data-target="8">0</h3>
-        <p class="text-lg">Years of Experience</p>
+  <!-- Animated Stats Section -->
+  <section class="section bg-gradient-to-r from-primary to-secondary dark:from-darkmode-secondary dark:to-darkmode-primary text-white text-center">
+    <div class="container">
+      <h2 class="h3 mb-6 theme-text">Our Impact in Numbers</h2>
+      <div class="row">
+        {stats.map((stat) => (
+          <div class="md:col-4">
+            <AnimatedCounter client:load target={stat.target} label={stat.label} />
+          </div>
+        ))}
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Counter Animation Script -->
-<script>
-  function animateCounters() {
-    const counters = document.querySelectorAll(".counter");
-
-    counters.forEach(counter => {
-      const target = +counter.getAttribute("data-target");
-      const duration = 1000;
-      const steps = 60;
-      let count = 0;
-      const increment = target / steps;
-
-      const updateCount = () => {
-        count += increment;
-        if (count < target) {
-          counter.innerText = `${Math.floor(count)}+`;
-          requestAnimationFrame(updateCount);
-        } else {
-          counter.innerText = `${target}+`;
-        }
-      };
-
-      updateCount();
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", animateCounters);
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") {
-      animateCounters();
-    }
-  });
-</script>
-
-<section class="section bg-body dark:bg-darkmode-body">
-  <div class="container">
-    <h2 class="h3 text-center mb-6 text-primary dark:text-darkmode-primary">Our Journey</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="timeline-icon dark:theme-icon">🌱</span>
-        <div class="timeline-content">
-          <h3>2018 - The Beginning</h3>
-          <p>We started as a small, ambitious team passionate about building intelligent software. Our first project, <strong>DataFusion</strong> 🌐, was a data aggregation tool that streamlined information from multiple sources.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-icon dark:theme-icon">🌍</span>
-        <div class="timeline-content">
-          <h3>2019 - Breaking Boundaries</h3>
-          <p>We developed <strong>InsightIQ</strong> 📊, an AI-driven analytics platform providing real-time insights for data-driven decisions.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-icon dark:theme-icon">💡</span>
-        <div class="timeline-content">
-          <h3>2020 - AI Breakthrough</h3>
-          <p>We made a significant impact with <strong>AutoFlow</strong> 🤖, an AI-powered workflow automation tool, increasing productivity by up to 40%.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-icon dark:theme-icon">🔗</span>
-        <div class="timeline-content">
-          <h3>2021 - Industry Integration</h3>
-          <p>Launched <strong>SmartNet</strong> 🌐, an IoT integration platform for smart infrastructure projects in healthcare and logistics.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-icon dark:theme-icon">🔐</span>
-        <div class="timeline-content">
-          <h3>2022 - Blockchain Integration</h3>
-          <p>Introduced <strong>CryptoGuard</strong> 💰, a secure asset management tool offering real-time tracking and fraud detection.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-icon dark:theme-icon">🏆</span>
-        <div class="timeline-content">
-          <h3>2023 - Scaling Up</h3>
-          <p>Launched <strong>Flux360</strong> 🚀, expanding globally and serving clients in healthcare, fintech, and supply chain management.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-icon dark:theme-icon">🌐</span>
-        <div class="timeline-content">
-          <h3>2024 - Strategic Partnerships</h3>
-          <p>Forged key partnerships with leading tech companies to enhance our AI and blockchain capabilities.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-icon dark:theme-icon">🚀</span>
-        <div class="timeline-content">
-          <h3>2025 - Innovation Hub</h3>
-          <p>Established the <strong>Flux Innovation Hub</strong>, focusing on developing next-gen solutions in AI, blockchain, and automation.</p>
-        </div>
+  <!-- Journey Section -->
+  <section class="section bg-body dark:bg-darkmode-body">
+    <div class="container">
+      <h2 class="h3 text-center mb-6 dark:text-white">Our Journey</h2>
+      <div class="timeline">
+        {timelineItems.map((item, index) => (
+          <TimelineItem
+            client:load
+            year={item.year}
+            title={item.title}
+            description={item.description}
+            icon={item.icon}
+            index={index}
+          />
+        ))}
       </div>
     </div>
-  </div>
-</section>
-
-  <!-- JavaScript for Animated Counter (Now Theme-Sensitive) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const counters = document.querySelectorAll<HTMLElement>(".counter");
-
-      function updateThemeColors() {
-        let isDarkMode = document.documentElement.classList.contains("dark");
-        document.querySelectorAll<HTMLElement>(".theme-text").forEach(el => {
-          el.style.color = isDarkMode ? "var(--darkmode-text-light)" : "var(--primary)";
-        });
-        document.querySelectorAll<HTMLElement>(".theme-icon").forEach(el => {
-          el.style.background = isDarkMode ? "var(--darkmode-primary)" : "var(--primary)";
-        });
-      }
-
-      counters.forEach(counter => {
-        let targetAttr = counter.getAttribute("data-target");
-        let target = targetAttr ? +targetAttr : 0;
-
-        let count = 0;
-        let duration = 1500; // Animation duration in ms
-        let startTime: number | null = null;
-
-        function updateCounter(timestamp: number) {
-          if (!startTime) startTime = timestamp;
-          let progress = timestamp - startTime;
-          let increment = Math.min(progress / duration, 1) * target;
-
-          counter.innerText = String(Math.floor(increment));
-
-          if (progress < duration) {
-            requestAnimationFrame(updateCounter);
-          } else {
-            counter.innerText = String(target) + "+";
-          }
-        }
-
-        requestAnimationFrame(updateCounter);
-      });
-
-      updateThemeColors();
-      document.documentElement.addEventListener("classChange", updateThemeColors);
-    });
-  </script>
-
-  <!-- Styles for Timeline (Now Theme-Responsive) -->
-  <style>
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: auto;
-    }
-    .timeline-item {
-      padding: 20px;
-      position: relative;
-      margin-bottom: 30px;
-      background: var(--light);
-      border-left: 4px solid var(--primary);
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    .dark .timeline-item {
-      background: var(--darkmode-body);
-      border-left: 4px solid var(--darkmode-primary);
-    }
-    .timeline-item:hover {
-      transform: translateX(10px);
-    }
-    .timeline-icon {
-      position: absolute;
-      left: -25px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-    }
-    .dark .timeline-icon {
-      background: var(--darkmode-primary);
-    }
-  </style>
+  </section>
 </Base>
+
+<style>
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px 0;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+  }
+  .timeline-item:hover {
+    transform: translateX(10px);
+  }
+  .timeline-icon {
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  .dark .timeline-icon {
+    background: var(--darkmode-primary);
+  }
+  .timeline-item:hover .timeline-icon {
+    transform: translateY(-50%) scale(1.1);
+  }
+  .timeline-content {
+    padding-left: 20px;
+  }
+</style>
+
+<script>
+  // No longer needed as animations are handled by React components
+</script>

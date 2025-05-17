@@ -81,6 +81,7 @@ const { pathname } = Astro.url;
                             pathname === child.url) &&
                           "active"
                         }`}
+                        data-nav-link
                       >
                         {child.name}
                       </a>
@@ -96,6 +97,7 @@ const { pathname } = Astro.url;
                     (pathname === `${menu.url}/` || pathname === menu.url) &&
                     "active"
                   }`}
+                  data-nav-link
                 >
                   {menu.name}
                 </a>
@@ -110,6 +112,7 @@ const { pathname } = Astro.url;
             <a
               class="btn btn-outline-primary btn-sm"
               href={navigation_button.link}
+              data-nav-link
             >
               {navigation_button.label}
             </a>
@@ -135,6 +138,7 @@ const { pathname } = Astro.url;
           <a
             class="btn btn-outline-primary btn-sm hidden lg:inline-block"
             href={navigation_button.link}
+            data-nav-link
           >
             {navigation_button.label}
           </a>
@@ -143,3 +147,106 @@ const { pathname } = Astro.url;
     </div>
   </nav>
 </header>
+
+<script>
+  // Custom client-side router
+  class Router {
+    private links: NodeListOf<HTMLAnchorElement>;
+    private mainContent: HTMLElement | null;
+
+    constructor() {
+      this.links = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]');
+      this.mainContent = document.getElementById('main-content');
+      this.setupEventListeners();
+    }
+
+    setupEventListeners(): void {
+      this.links.forEach(link => {
+        link.addEventListener('click', (e: Event) => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          if (href) {
+            this.navigate(href);
+          }
+        });
+      });
+
+      // Handle browser back/forward buttons
+      window.addEventListener('popstate', () => {
+        this.handleRouteChange(window.location.pathname);
+      });
+    }
+
+    async navigate(url: string): Promise<void> {
+      try {
+        if (!this.mainContent) return;
+        
+        // Show loading state
+        this.mainContent.style.opacity = '0.5';
+        
+        // Fetch the new page content
+        const response = await fetch(url);
+        const html = await response.text();
+        
+        // Create a temporary element to parse the HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // Get the new content
+        const newContent = doc.getElementById('main-content');
+        
+        if (newContent) {
+          // Update the URL without reload
+          window.history.pushState({}, '', url);
+          
+          // Update the content with a fade effect
+          this.mainContent.style.transition = 'opacity 0.3s ease-in-out';
+          this.mainContent.innerHTML = newContent.innerHTML;
+          this.mainContent.style.opacity = '1';
+          
+          // Update active states
+          this.updateActiveStates(url);
+        }
+      } catch (error) {
+        console.error('Navigation failed:', error);
+        // Fallback to regular navigation if something goes wrong
+        window.location.href = url;
+      }
+    }
+
+    handleRouteChange(path: string): void {
+      this.updateActiveStates(path);
+    }
+
+    updateActiveStates(currentPath: string): void {
+      this.links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath || href === currentPath + '/') {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  // Initialize router when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new Router();
+  });
+</script>
+
+<style>
+  /* Add transition styles */
+  #main-content {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .nav-link {
+    transition: color 0.3s ease-in-out;
+  }
+
+  .nav-link.active {
+    color: var(--primary-color);
+  }
+</style>
