@@ -12,6 +12,25 @@ const authorIndex = (await getEntry(
   "-index"
 )) as CollectionEntry<"authors">;
 const ourTeam = await getSinglePage(COLLECTION_FOLDER);
+
+// Define custom order
+const customOrder = [
+  "Ali Haider",
+  "Shehroz Zaidi",
+  "Hamna Huzaifa",
+  "Hiba Huzaifa",
+  "Zinnia Zia",
+  "Mahnoor Ali",
+  "Amna Ateef",
+  "Shahad Mattar"
+];
+
+// Sort team members according to custom order
+const sortedTeam = [...ourTeam].sort((a, b) => {
+  const indexA = customOrder.indexOf(a.data.title);
+  const indexB = customOrder.indexOf(b.data.title);
+  return indexA - indexB;
+});
 ---
 
 <Base title={authorIndex.data.title}>
@@ -20,7 +39,7 @@ const ourTeam = await getSinglePage(COLLECTION_FOLDER);
     <div class="container">
       <div class="row justify-center">
         {
-          ourTeam.map((author) => (
+          sortedTeam.map((author) => (
             <div class="mb-14 md:col-6 lg:col-4">
               <AuthorCard data={author} />
             </div>
