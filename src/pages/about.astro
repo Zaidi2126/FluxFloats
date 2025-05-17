@@ -3,6 +3,8 @@ import ImageMod from "@/components/ImageMod.astro";
 import Base from "@/layouts/Base.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import { markdownify } from "@/lib/utils/textConverter";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import TimelineItem from "@/components/TimelineItem";
 
 const title = "About Us";
 const description = "Discover our journey, expertise, and commitment to innovation.";
@@ -71,12 +73,19 @@ const timelineItems = [
 <Base title={title} description={description}>
   <PageHeader title={title} />
 
+  <style>
+    /* Make specific About Us headings black in light mode */
+    .about-heading {
+      color: black !important;
+    }
+  </style>
+
   <!-- About Section -->
   <section class="section-sm bg-body dark:bg-darkmode-body text-text-dark dark:text-darkmode-text-dark">
     <div class="container">
       <div class="row justify-center">
         <div class="text-center md:col-10 lg:col-7">
-          <h2 class="h3 mb-6 text-primary dark:text-darkmode-primary">Who We Are</h2>
+          <h2 class="h3 mb-6 dark:text-white">Who We Are</h2>
           <p class="text-lg text-text-light dark:text-darkmode-text-light">
             {markdownify("FluxFloats is a forward-thinking software house specializing in Artificial Intelligence, Machine Learning, Web Development, UI/UX Design, and Automation. We create intelligent, scalable, and user-centric solutions that drive innovation, streamline operations, and enhance digital experiences. Our mission is to empower businesses and individuals with cutting-edge technology that transforms ideas into reality.")}
           </p>
@@ -88,7 +97,7 @@ const timelineItems = [
   <!-- Vision & Mission Section -->
   <section class="section bg-light dark:bg-darkmode-light text-text-dark dark:text-darkmode-text-dark">
     <div class="container text-center">
-      <h2 class="h3 mb-6 text-primary dark:text-darkmode-primary">Our Vision & Mission</h2>
+      <h2 class="h3 mb-6 dark:text-white">Our Vision & Mission</h2>
       <div class="row">
         <div class="md:col-6">
           <div class="p-6 shadow-lg rounded-lg bg-white dark:bg-darkmode-body transition-transform hover:scale-105">
@@ -120,10 +129,9 @@ const timelineItems = [
     <div class="container">
       <h2 class="h3 mb-6 theme-text">Our Impact in Numbers</h2>
       <div class="row">
-        {stats.map((stat, index) => (
+        {stats.map((stat) => (
           <div class="md:col-4">
-            <h3 class="h2 counter theme-text" data-target={stat.target}>0</h3>
-            <p class="text-lg">{stat.label}</p>
+            <AnimatedCounter client:load target={stat.target} label={stat.label} />
           </div>
         ))}
       </div>
@@ -133,16 +141,17 @@ const timelineItems = [
   <!-- Journey Section -->
   <section class="section bg-body dark:bg-darkmode-body">
     <div class="container">
-      <h2 class="h3 text-center mb-6 text-primary dark:text-darkmode-primary">Our Journey</h2>
+      <h2 class="h3 text-center mb-6 dark:text-white">Our Journey</h2>
       <div class="timeline">
         {timelineItems.map((item, index) => (
-          <div class="timeline-item">
-            <span class="timeline-icon dark:theme-icon">{item.icon}</span>
-            <div class="timeline-content">
-              <h3>{item.year} - {item.title}</h3>
-              <p set:html={item.description} />
-            </div>
-          </div>
+          <TimelineItem
+            client:load
+            year={item.year}
+            title={item.title}
+            description={item.description}
+            icon={item.icon}
+            index={index}
+          />
         ))}
       </div>
     </div>
@@ -157,23 +166,12 @@ const timelineItems = [
     padding: 20px 0;
   }
   .timeline-item {
-    padding: 25px;
     position: relative;
     margin-bottom: 40px;
-    background: var(--light);
-    border-left: 4px solid var(--primary);
     transition: all 0.3s ease;
-    border-radius: 0 8px 8px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .dark .timeline-item {
-    background: var(--darkmode-body);
-    border-left: 4px solid var(--darkmode-primary);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   .timeline-item:hover {
     transform: translateX(10px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
   .timeline-icon {
     position: absolute;
@@ -201,100 +199,8 @@ const timelineItems = [
   .timeline-content {
     padding-left: 20px;
   }
-  .timeline-content h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-  }
-  .dark .timeline-content h3 {
-    color: var(--darkmode-primary);
-  }
-  .timeline-content p {
-    line-height: 1.6;
-    margin: 0;
-    color: var(--text-light);
-  }
-  .dark .timeline-content p {
-    color: var(--darkmode-text-light);
-  }
 </style>
 
 <script>
-  function animateCounters() {
-    const counters = document.querySelectorAll(".counter");
-
-    counters.forEach(counter => {
-      if (!(counter instanceof HTMLElement)) return;
-      
-      const target = parseInt(counter.getAttribute("data-target") || "0");
-      let current = 0;
-      const duration = 2000;
-      const startTime = performance.now();
-
-      function updateCounter() {
-        const elapsed = performance.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        current = Math.floor(progress * target);
-        counter.textContent = `${current}+`;
-
-        if (progress < 1) {
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.textContent = `${target}+`;
-        }
-      }
-
-      // Start animation immediately
-      requestAnimationFrame(updateCounter);
-    });
-  }
-
-  // Initialize counters immediately
-  animateCounters();
-
-  // Also initialize on page load
-  document.addEventListener("DOMContentLoaded", animateCounters);
-
-  // Handle client-side navigation
-  document.addEventListener("astro:after-swap", () => {
-    // Small delay to ensure DOM is ready
-    setTimeout(animateCounters, 100);
-  });
-
-  // Reinitialize when page becomes visible
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") {
-      animateCounters();
-    }
-  });
-
-  // Watch for navigation events
-  document.addEventListener("astro:page-load", () => {
-    // Small delay to ensure DOM is ready
-    setTimeout(animateCounters, 100);
-  });
-
-  // Watch for content changes
-  const observer = new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-        // Check if counters exist in the new content
-        const hasCounters = Array.from(mutation.addedNodes).some(node => 
-          node instanceof Element && node.querySelector('.counter')
-        );
-        if (hasCounters) {
-          setTimeout(animateCounters, 100);
-          break;
-        }
-      }
-    }
-  });
-
-  // Start observing the entire document
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
+  // No longer needed as animations are handled by React components
 </script>
